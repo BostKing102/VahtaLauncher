@@ -1,6 +1,7 @@
 package com.example.goslauncher;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 public class MainActivity extends AppCompatActivity{
 
     private Intent MenuActivity;
+    private Integer BATTERY_FRAME = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity{
 
                                 updateDateAndTime();
                                 updateSimInfo();
-                                System.out.println(getBatteryProcent());
+                                updateBattery();
                             }
                         });
                     }
@@ -143,11 +145,82 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    public int getBatteryIconForProcent(int Procent) {
+        int icon;
+
+        if (isBatteryCharging()) {
+            icon = getBatteryChargingAnimFrameAndUpdateFrame();
+        } else if (Procent >= 85) {
+            icon = R.drawable.battery_level_5;
+        } else if (Procent >= 70) {
+            icon = R.drawable.battery_level_4;
+        } else if (Procent >= 55) {
+            icon = R.drawable.battery_level_3;
+        } else if (Procent >= 40) {
+            icon = R.drawable.battery_level_2;
+        } else if (Procent >= 25) {
+            icon = R.drawable.battery_level_1;
+        } else if (Procent >= 10) {
+            icon = R.drawable.battery_level_0;
+        } else {
+            icon = R.drawable.battery_level_alert;
+        }
+
+        return icon;
+    }
+
     public int getBatteryProcent() {
         BatteryManager bm = (BatteryManager) getApplicationContext().getSystemService(BATTERY_SERVICE);
 
         return bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
     }
+
+    public int getBatteryChargingAnimFrameAndUpdateFrame () {
+        updateBatteryFrame();
+
+        int[] BATTERY_FRAMES = {
+            R.drawable.battery_level_alert,
+            R.drawable.battery_level_0,
+            R.drawable.battery_level_1,
+            R.drawable.battery_level_2,
+            R.drawable.battery_level_3,
+            R.drawable.battery_level_4,
+            R.drawable.battery_level_5
+        };
+
+        return BATTERY_FRAMES[BATTERY_FRAME];
+    }
+
+    public void updateBatteryFrame () {
+        BATTERY_FRAME++;
+
+        System.out.println(BATTERY_FRAME);
+
+        if (BATTERY_FRAME > 6) {
+            BATTERY_FRAME = 0;
+        }
+    }
+
+    public void updateBatteryIcon() {
+        ImageView view = findViewById(R.id.batteryIcon);
+        int icon = getBatteryIconForProcent(getBatteryProcent());
+        view.setImageResource(icon);
+    }
+
+    public void updateBattery() {
+        updateBatteryIcon();
+    }
+
+    public Boolean isBatteryCharging() {
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = getApplicationContext().registerReceiver(null, ifilter);
+
+        assert batteryStatus != null;
+        int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+
+        return status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL;
+    }
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
