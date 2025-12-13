@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity{
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH : mm");
 
         return nowTime.format(timeFormat);
+
     }
 
 
