@@ -1,7 +1,7 @@
 package com.example.goslauncher;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity{
 
                                 updateDateAndTime();
                                 updateSimInfo();
+                                System.out.println(getBatteryProcent());
                             }
                         });
                     }
@@ -142,7 +143,11 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    public int getBatteryProcent() {
+        BatteryManager bm = (BatteryManager) getApplicationContext().getSystemService(BATTERY_SERVICE);
 
+        return bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
