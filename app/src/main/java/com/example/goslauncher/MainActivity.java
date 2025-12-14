@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity{
 
                                 updateDateAndTime();
                                 updateSimInfo();
-                                updateBattery();
+                                updateBatteryIcon();
                             }
                         });
                     }
@@ -205,10 +205,6 @@ public class MainActivity extends AppCompatActivity{
         ImageView view = findViewById(R.id.batteryIcon);
         int icon = getBatteryIconForProcent(getBatteryProcent());
         view.setImageResource(icon);
-    }
-
-    public void updateBattery() {
-        updateBatteryIcon();
     }
 
     public Boolean isBatteryCharging() {
