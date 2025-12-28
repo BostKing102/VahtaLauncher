@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.Window;
@@ -61,13 +62,14 @@ public class MainActivity extends AppCompatActivity{
                     while (!isInterrupted()){
                         Thread.sleep(1000); // todo fix warning
                         runOnUiThread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @RequiresApi(api = Build.VERSION_CODES.P)
                             @Override
                             public void run() {
 
                                 updateDateAndTime();
                                 updateSimInfo();
                                 updateBatteryIcon();
+                                updateSignalStrenght();
                             }
                         });
                     }
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity{
 
     public String getOperatorName () {
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+
 
         String operatorName = telephonyManager.getSimOperatorName();
 
@@ -194,8 +197,6 @@ public class MainActivity extends AppCompatActivity{
     public void updateBatteryFrame () {
         BATTERY_FRAME++;
 
-        System.out.println(BATTERY_FRAME);
-
         if (BATTERY_FRAME > 6) {
             BATTERY_FRAME = 0;
         }
@@ -205,6 +206,38 @@ public class MainActivity extends AppCompatActivity{
         ImageView view = findViewById(R.id.batteryIcon);
         int icon = getBatteryIconForProcent(getBatteryProcent());
         view.setImageResource(icon);
+    }
+    
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    public void updateSignalStrenght () {
+        ImageView view = findViewById(R.id.signalStrenght);
+
+        int icon = getSignalStrenghtIcon(getSignalStrenght());
+        view.setImageResource(icon);
+    }
+    
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    public int getSignalStrenghtIcon(int signalStrenght) {
+     
+        int[] SIGNAL_FRAMES = {
+                R.drawable.signal_strenght_0,
+                R.drawable.signal_strenght_1,
+                R.drawable.signal_strenght_2,
+                R.drawable.signal_strenght_3,
+                R.drawable.signal_strenght_4,
+        };
+        
+        return SIGNAL_FRAMES[signalStrenght];
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    public int getSignalStrenght() {
+
+        TelephonyManager manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+
+        SignalStrength strenght = manager.getSignalStrength();
+
+        return strenght != null ? strenght.getLevel() : 0;
     }
 
     public Boolean isBatteryCharging() {

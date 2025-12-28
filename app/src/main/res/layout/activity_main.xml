@@ -42,7 +42,7 @@
             app:srcCompat="@drawable/battery_full_foreground" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/signalStrenght"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="5dp"
@@ -57,7 +57,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/signalStrenght"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/signal_0_2sim_foreground" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,7 +79,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
