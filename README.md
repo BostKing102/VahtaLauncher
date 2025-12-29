@@ -25,7 +25,7 @@
 
 Меню выбора в лаунчере сделано по образу и подобию старых кнопочных телефонов с плавной анимацией выбора приложения/настроек/функций
 
-<img width="476" height="638" alt="image" src="https://github.com/user-attachments/assets/7a5d2c9d-c3b6-480c-a925-794de9e5754c" />
+<img width="276" height="338" alt="image" src="https://github.com/user-attachments/assets/7a5d2c9d-c3b6-480c-a925-794de9e5754c" />
 
 # Функция профилей звука
 * В разработке
