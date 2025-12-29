@@ -1,4 +1,4 @@
-package com.example.goslauncher;
+package com.example.vahtalauncher;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,7 +55,7 @@ public class MenuActivity extends AppCompatActivity {
         setFullScreenMode();
     }
 
-    public void getSelectedMenuIconCoords() {
+    public void setSelectedMenuIconCoords() {
         ImageView selectedMenuView = findViewById(MENUS[MENU_SELECT]);
         int[] coords = new int[2];
 
@@ -100,7 +100,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         }
         setMenuToolBarName(MENUS_NAMES[MENU_SELECT]);
-        getSelectedMenuIconCoords();
+        setSelectedMenuIconCoords();
     }
 
     public void setPervMenuSelect(int Steps) {
@@ -112,7 +112,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         }
         setMenuToolBarName(MENUS_NAMES[MENU_SELECT]);
-        getSelectedMenuIconCoords();
+        setSelectedMenuIconCoords();
     }
 
 

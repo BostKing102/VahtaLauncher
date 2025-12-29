@@ -1,4 +1,4 @@
-package com.example.goslauncher;
+package com.example.vahtalauncher;
 
 import android.content.Intent;
 import android.content.IntentFilter;
