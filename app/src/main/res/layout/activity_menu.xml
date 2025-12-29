@@ -5,13 +5,149 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    android:background="@color/black"
+    tools:context=".MenuActivity" >
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/toolBarText"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:text="Игры"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bibika"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="137dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="ОК"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Назад"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/selectBox"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:accessibilityTraversalBefore="@id/gameMenu"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/profilesMenu"
+        app:layout_constraintEnd_toStartOf="@+id/multimediaMenu"
+        app:layout_constraintStart_toEndOf="@+id/organaizerMenu"
+        app:layout_constraintTop_toBottomOf="@+id/messagesMenu"
+        app:srcCompat="@drawable/group_1__1_" />
+
+    <ImageView
+        android:id="@+id/contactsMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBarText"
+        app:srcCompat="@mipmap/ohibe_foreground" />
+
+    <ImageView
+        android:id="@+id/callsMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBarText"
+        app:srcCompat="@mipmap/calls_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/messagesMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/callsMenu"
+        app:layout_constraintStart_toEndOf="@+id/contactsMenu"
+        app:layout_constraintTop_toBottomOf="@+id/toolBarText"
+        app:srcCompat="@mipmap/sms_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/settingsMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/settings_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/profilesMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/filesMenu"
+        app:layout_constraintStart_toEndOf="@+id/settingsMenu"
+        app:srcCompat="@mipmap/profiles_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/filesMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/files_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/organaizerMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/settingsMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactsMenu"
+        app:srcCompat="@mipmap/organaizer_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/multimediaMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/filesMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callsMenu"
+        app:srcCompat="@mipmap/multimedia_menu_foreground" />
+
+    <ImageView
+        android:id="@+id/gameMenu"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/profilesMenu"
+        app:layout_constraintEnd_toStartOf="@+id/multimediaMenu"
+        app:layout_constraintStart_toEndOf="@+id/organaizerMenu"
+        app:layout_constraintTop_toBottomOf="@+id/messagesMenu"
+        app:srcCompat="@mipmap/games_menu_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
