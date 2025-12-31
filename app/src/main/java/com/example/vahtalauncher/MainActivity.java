@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity{
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar();
 
         super.onCreate(savedInstanceState);
         MenuActivity = new Intent(this, MenuActivity.class);
@@ -250,10 +249,9 @@ public class MainActivity extends AppCompatActivity{
         return status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL;
     }
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_MENU) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_MENU || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
             startActivity(MenuActivity);
             return true;
         }
