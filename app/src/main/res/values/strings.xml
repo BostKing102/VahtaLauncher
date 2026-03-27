@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VahtaLauncher</string>
+    <string name="title_activity_prifiles_dialog">PrifilesDialog</string>
+    <string name="title_activity_profiles_dialog">ProfilesDialog</string>
 </resources>

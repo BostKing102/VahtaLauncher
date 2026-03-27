@@ -13,6 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VahtaLauncher">
         <activity
+            android:name=".organaizerPages.VahtaTimer"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.FilesDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.MultimediaDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.CallsDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.MessagesDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.GamesDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.OrganaizerDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.ProfilesDialog"
+            android:exported="false" />
+        <activity
+            android:name=".MenuViewList.SettingsDialog"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="true" />
         <activity

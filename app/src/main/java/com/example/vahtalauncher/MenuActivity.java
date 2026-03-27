@@ -1,9 +1,10 @@
 package com.example.vahtalauncher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
-import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.vahtalauncher.MenuViewList.CallsDialog;
+import com.example.vahtalauncher.MenuViewList.FilesDialog;
+import com.example.vahtalauncher.MenuViewList.GamesDialog;
+import com.example.vahtalauncher.MenuViewList.MessagesDialog;
+import com.example.vahtalauncher.MenuViewList.MultimediaDialog;
+import com.example.vahtalauncher.MenuViewList.OrganaizerDialog;
+import com.example.vahtalauncher.MenuViewList.ProfilesDialog;
+import com.example.vahtalauncher.MenuViewList.SettingsDialog;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -42,6 +52,10 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
@@ -118,6 +132,40 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (event.getKeyCode() == KeyEvent.KEYCODE_MENU || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
+            if (MENU_SELECT == 1) {
+                startActivity(new Intent(this, MessagesDialog.class));
+            }
+
+            if (MENU_SELECT == 2) {
+                startActivity(new Intent(this, CallsDialog.class));
+            }
+
+            if (MENU_SELECT == 3) {
+                startActivity(new Intent(this, OrganaizerDialog.class));
+            }
+
+            if (MENU_SELECT == 4) {
+                startActivity(new Intent(this, GamesDialog.class));
+            }
+
+            if (MENU_SELECT == 5) {
+                startActivity(new Intent(this, MultimediaDialog.class));
+            }
+
+            if (MENU_SELECT == 6) {
+                startActivity(new Intent(this, SettingsDialog.class));
+            }
+
+            if (MENU_SELECT == 7) {
+                startActivity(new Intent(this, ProfilesDialog.class));
+            }
+
+            if (MENU_SELECT == 8) {
+                startActivity(new Intent(this, FilesDialog.class));
+            }
+        }
 
         if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
             setNextMenuSelect(1);

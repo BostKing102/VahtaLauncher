@@ -1,5 +1,7 @@
 package com.example.vahtalauncher;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
